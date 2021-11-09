@@ -7,6 +7,8 @@
         <InputText type="text" v-model="text"/>
         <Button type="submit" label="Submit"/>
         <h3>{{message}}</h3>
+           <Chart class ="p-20"
+        type="doughnut" :data="chartData" :options="lightOptions" />
       </form>
     </div>
 
@@ -21,8 +23,29 @@ export default {
     data() {
         return {
             message: null,
-            text: null
+            text: null,
+
+                        chartData: {
+                labels: ['A','B','C'],
+                datasets: [
+                    {
+                        data: [300, 50, 100],
+                        backgroundColor: ["#FF6384","#36A2EB","#FFCE56"],
+                        hoverBackgroundColor: ["#FF6384","#36A2EB","#FFCE56"]
+                    }
+                ]
+            },
+			lightOptions: {
+				plugins: {
+                    legend: {
+                        labels: {
+                            color: '#495057'
+                        }
+                    }
+                }
+			}
         }
+        
     },
     methods: {
         greet() {
